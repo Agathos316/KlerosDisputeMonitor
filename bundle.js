@@ -1,5 +1,5 @@
-import { ethers } from 'ethers.esm.js';
-import { Record } from "index.esm.js";
+import { ethers } from './ethers.esm.js';
+import { Record } from "./index.esm.js";
 
 async function main() {
     let providerURL = 'https://mainnet.infura.io/v3/0bb37f2d858f4d15919ed5a06f862776';
