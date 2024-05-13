@@ -1,12 +1,7 @@
-//import { createRequire } from 'module';
-//const require = createRequire(import.meta.url);
+import { ethers } from 'ethers.esm.js';
+import { Record } from "index.esm.js";
 
-//var { ethers } = require('./node_modules/ethers');
-//var { Record, Tuple } = require("./node_modules/@bloomberg/record-tuple-polyfill");
-import { ethers } from './node_modules/ethers/dist/ethers.esm.js';
-import { Record } from "./node_modules/@bloomberg/record-tuple-polyfill/lib/index.esm.js";
-
-async function readData() {
+async function main() {
     let providerURL = 'https://mainnet.infura.io/v3/0bb37f2d858f4d15919ed5a06f862776';
 
     // Setup the webpage.
@@ -41,72 +36,6 @@ async function readData() {
         "function disputes(uint256) public view returns (Tuple(uint96 subcourtID, uint256 arbitrated, uint256 numberOfChoices, uint8 period, uint256 lastPeriodChange, uint256 drawsInRound, uint256 commitsInRound, bool ruled))",
         "event DisputeCreation(uint256 _disputeID, address _arbitrable)"
     ];
-/*    const KlerosABI = [
-        {
-            "constant": true,
-            "inputs": [
-              {
-                "name": "",
-                "type": "uint256"
-              }
-            ],
-            "name": "disputes",
-            "outputs": [
-              {
-                "name": "subcourtID",
-                "type": "uint96"
-              },
-              {
-                "name": "arbitrated",
-                "type": "address"
-              },
-              {
-                "name": "numberOfChoices",
-                "type": "uint256"
-              },
-              {
-                "name": "period",
-                "type": "uint8"
-              },
-              {
-                "name": "lastPeriodChange",
-                "type": "uint256"
-              },
-              {
-                "name": "drawsInRound",
-                "type": "uint256"
-              },
-              {
-                "name": "commitsInRound",
-                "type": "uint256"
-              },
-              {
-                "name": "ruled",
-                "type": "bool"
-              }
-            ],
-            "payable": false,
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "anonymous": false,
-            "inputs": [
-              {
-                "indexed": true,
-                "name": "_disputeID",
-                "type": "uint256"
-              },
-              {
-                "indexed": true,
-                "name": "_arbitrable",
-                "type": "address"
-              }
-            ],
-            "name": "DisputeCreation",
-            "type": "event"
-        }
-    ];*/
 
     const Period = [
         'Evidence (Evidence can be submitted. This is also when drawing has to take place.',
@@ -118,11 +47,6 @@ async function readData() {
 
     // Connect to the Kleros contract.
     const contractKleros = new ethers.Contract(KlerosAddress, KlerosABI, provider);
-/*    // Object that is an instance of the web3 library/API.
-    const web3 = new Web3(providerURL);  // The URL to your ETH node on the blockchain.
-    // Object that points to a contract deployed on the blockchain.
-    // This builds a contract object that will allow us to interact with the contract.
-    const contractKleros = new web3.eth.Contract(KlerosABI, KlerosAddress);*/
     console.log('Successfully connected to KlerosLiquid.sol\n');
 
     // Find the highest indexed dispute.
@@ -146,10 +70,6 @@ async function readData() {
         }
         try {
             retrievedDispute = await contractKleros.disputes(disputeIndex);
-/*            contractKleros.methods.disputes(disputeIndex).call()
-            .then(result => {
-                retrievedDispute = result;
-            });*/
             lastGoodIndex = disputeIndex;
             // If we've finished the search...
             if (lastFailedIndex - lastGoodIndex == 1) {
@@ -266,10 +186,6 @@ async function readData() {
         $loading.style.visibility = "visible";
         $disputeNum.style.visibility = "hidden";
         retrievedDispute = await contractKleros.disputes(disputeIndex);
-/*        retrievedDispute = await contractKleros.methods.disputes(disputeIndex).call()
-        .then(result => {
-                retrievedDispute = result;
-            });*/
         updateAndPrintRecord();
         $disputeNum.style.visibility = "visible";
         $loading.style.visibility = "hidden";
@@ -292,10 +208,6 @@ async function readData() {
         $disputeNum.style.visibility = "hidden";
         $loading.style.visibility = "visible";
         retrievedDispute = await contractKleros.disputes(disputeIndex);
-/*        retrievedDispute = await contractKleros.methods.disputes(disputeIndex).call()
-        .then(result => {
-                retrievedDispute = result;
-            });*/
         updateAndPrintRecord();
         $label1.innerHTML = "The latest dispute created on Kleros is:";
         $viewLatest.style.visibility = "hidden";
@@ -305,50 +217,5 @@ async function readData() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    readData();
+    main();
 });
-
-/*// Read other blockchain events.
-    const WETH_Address = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'; // WETH contract address
-
-    // ABI portion for the Transfer event
-    const WETH_ABI = [
-    {
-        anonymous: false,
-        inputs: [
-        {
-            indexed: true,
-            internalType: 'address',
-            name: 'from',
-            type: 'address'
-        },
-        {
-            indexed: true,
-            internalType: 'address',
-            name: 'to',
-            type: 'address'
-        },
-        {
-            indexed: false,
-            internalType: 'uint256',
-            name: 'value',
-            type: 'uint256'
-        }
-        ],
-        name: 'Transfer',
-        type: 'event'
-    }
-    ];
-
-    // Connect to the WETH contract.
-    const contractWETH = new ethers.Contract(WETH_Address, WETH_ABI, provider);
-    console.log('Successfully connected to WETH contract\n');
-
-    contractWETH.on('Transfer', (from, to, value, event) => {
-        console.log('Transfer event triggered:', {
-        from: from,
-        to: to,
-        value: value.toString(),
-        data: event,
-        });
-    });*/
