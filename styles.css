@@ -1,0 +1,211 @@
+/* Place your CSS styles in this file */
+
+html {
+    position: relative;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    
+    background: linear-gradient(to bottom, #2c005e 0%, #2c005e 15%, #4d00b4 50%, #4d00b4 100%);
+    
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    font-family: "Source Sans Pro", sans-serif;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: orange;
+}
+
+h2 {
+    color: white;
+    font-size: 22px;
+    text-align: center;
+}
+
+huge {
+    color: white;
+    font-size: 42px;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    height: 50px;
+}
+
+.header {
+    margin: auto;
+}
+
+.headerRight {
+    color: #b7b7b7;
+    float: right;
+    margin-right: 5%;
+    line-height: 0.5;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+}
+
+.left {
+    width: 30%;
+    padding-left: 20px;
+    float: left;
+}
+
+.right {
+    margin-left: 50%;
+    line-height: 1.3;
+    font-size: 15px;
+}
+
+.layered {
+    display: grid;
+    /* Set horizontal alignment of items in, case they have a different width. */
+    justify-items: center;
+    /* Set vertical alignment of items, in case they have a different height. */
+    align-items: center;
+}
+  
+.layered > * {
+    grid-column-start: 1;
+    grid-row-start: 1;
+}
+
+searchPercent {
+    color: white;
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
+}
+
+.container2 {
+    display: inline-block;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    padding-left: 10px;
+    line-height: 1.3;
+    height: 350px;
+}
+
+footer {
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+    color: black;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 30px;
+    width: 100%;
+    overflow: hidden;
+}
+
+a:link {
+    color: white;
+    background-color: transparent;
+    text-decoration: underline;
+}
+  
+a:visited {
+    color: white;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+.inputbox {
+	padding: 0 10px;
+	font-size: 18px;
+	width: 100%;
+	max-width: 60px;
+	height: 50px;
+    border-style: none;
+	border-radius: 10px 10px 10px 10px;
+}
+
+/* From  https://getcssscan.com/css-buttons-examples */
+.button-65 {
+    appearance: none;
+    backface-visibility: hidden;
+    background-color: #2f89ff;
+    border-radius: 10px 10px 10px 10px;
+    border-style: none;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    height: 50px;
+    letter-spacing: normal;
+    line-height: 1.5;
+    outline: none;
+    overflow: hidden;
+    padding: 14px 30px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transform: translate3d(0, 0, 0);
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    white-space: nowrap;
+    width: 176px;
+}
+
+.button-65:hover {
+    background-color: #1366d6;
+    box-shadow: rgba(0, 0, 0, .05) 0 5px 30px, rgba(0, 0, 0, .05) 0 1px 4px;
+    opacity: 1;
+    transform: translateY(0);
+    transition-duration: .35s;
+}
+
+.button-65:hover:after {
+    opacity: .5;
+}
+
+.button-65:active {
+    box-shadow: rgba(0, 0, 0, .1) 0 3px 6px 0, rgba(0, 0, 0, .1) 0 0 10px 0, rgba(0, 0, 0, .1) 0 1px 4px -1px;
+    transform: translateY(2px);
+    transition-duration: .35s;
+}
+
+.button-65:active:after {
+    opacity: 1;
+}
+
+#loading {
+    display: table;
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+  }
+  
+  @keyframes spin {
+    to { -webkit-transform: rotate(360deg); }
+  }
+  @-webkit-keyframes spin {
+    to { -webkit-transform: rotate(360deg); }
+  }
