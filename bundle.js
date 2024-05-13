@@ -1,5 +1,5 @@
-import { ethers } from './node_modules/ethers/dist/ethers.esm.js';
-import { Record } from "./node_modules/@bloomberg/record-tuple-polyfill/lib/index.esm.js";
+import { ethers } from './node_modules2/ethers/dist/ethers.esm.js';
+import { Record } from "./node_modules2/@bloomberg/record-tuple-polyfill/lib/index.esm.js";
 
 async function main() {
     let providerURL = 'https://mainnet.infura.io/v3/0bb37f2d858f4d15919ed5a06f862776';
